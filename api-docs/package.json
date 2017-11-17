@@ -44,6 +44,7 @@
     "grunt-jsonlint": "^1.0.4",
     "grunt-nodemon": "^0.4.0",
     "grunt-raml2html": "^0.3.1",
+    "handlebars": "4.0.0",
     "jsonlint": "^1.6.2",
     "load-grunt-config": "^0.17.2",
     "raml2html": "^2.0.2",
@@ -51,7 +52,7 @@
   },
   "dependencies": {
     "faker": "^3.0.0",
-    "handlebars": "^3.0.3",
+    "handlebars": "4.0.0",
     "moment": "^2.10.6",
     "pdfkit": "^0.7.1",
     "raml-mocker": "^0.1.13",
