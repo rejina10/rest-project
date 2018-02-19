@@ -17,17 +17,19 @@ advisor2	advisor2	pass2
 
 Two models are created for advisor1 and one model is created for advisor2. 
 
-Get Models for advisor:
-/v1/advisor/{advisorId}/model
+### Get Models for advisor:
+**/v1/advisor/{advisorId}/model**
 This call will return all the model of the advisor if the advisor is authenticated and has access to the models.
 
 Example Calls:
 In chrome:  http://localhost:8090/v1/advisor/1/model  fill username: advisor1 and password: pass1. 
+
 Post man:  In postman  
 1.	use  http://localhost:8090/v1/advisor/1/model as URL. 
 2.	Set Method as GET
 3.	Set Authorization Type: Basic Auth
 4.	Set username: advisor1 and  password: pass1
+
 CURL: Run following CURL command:
 ```
   curl -X GET \
@@ -36,79 +38,81 @@ CURL: Run following CURL command:
   
  ```
 
-Test Cases:
+#### Test Cases:
 
-1)	Forbidden (403): If advisor tries to access models that are not associated with logged in or authenticated; 403 Forbidden status code is returned. 
+  1)	Forbidden (403): If advisor tries to access models that are not associated with logged in or authenticated; 403 Forbidden status         code is returned. 
 
-Replication:
+      Replication:
 
-Post man:  In postman  
--	use  http://localhost:8090/v1/advisor/1/model as URL.  Set method as GET.
--	Set Authorization Type: Basic Auth
--	Set username: advisor2 and  password: pass2
+      Post man:  In postman  
+      -	use  http://localhost:8090/v1/advisor/1/model as URL.  Set method as GET.
+      -	Set Authorization Type: Basic Auth
+      -	Set username: advisor2 and  password: pass2
 
-CURL: 
-  curl -X GET \
-  http://localhost:8090/v1/advisor/1/model \
-  -H 'authorization: Basic advisor2:pass2' \
+      CURL: 
+      ```
+        curl -X GET \
+        http://localhost:8090/v1/advisor/1/model \
+        -H 'authorization: Basic advisor2:pass2' \
+      ```
 
+  2)	Not Found (404): If user tries to get models of advisor that is not in database then 404 is returned. 
 
-2)	Not Found (404): If user tries to get models of advisor that is not in database then 404 is returned. 
+      Replication: 
 
-Replication: 
+      Post man:  In postman  
+      1.	use  http://localhost:8090/v1/advisor/10000/model as URL.  Set method as GET.
+      2.	Set Authorization Type: Basic Auth
+      3.	Set username: advisor2 and  password: pass2
+      CURL: 
+      ```
+        curl -X GET \
+        http://localhost:8090/v1/advisor/10000/model \
+        -H 'authorization: Basic advisor2:pass2' \
+      ```
 
-Post man:  In postman  
-1.	use  http://localhost:8090/v1/advisor/10000/model as URL.  Set method as GET.
-2.	Set Authorization Type: Basic Auth
-3.	Set username: advisor2 and  password: pass2
-CURL: 
-```
-  curl -X GET \
-  http://localhost:8090/v1/advisor/10000/model \
-  -H 'authorization: Basic advisor2:pass2' \
-```
-
-PUT Models for advisor:
-/v1/advisor/{advisorId}/model
+### PUT Models for advisor:
+**/v1/advisor/{advisorId}/model**
 This call adds or update model for an advisor if the advisor is authenticated and has access to the models.
-Post man:  In postman  
-1.	use  http://localhost:8090/v1/advisor/1/model as URL. 
-2.	Set Method as PUT
-3.	Set Authorization Type: Basic Auth
-4.	Set username: advisor1 and  password: pass1
-5.	Set Headers; Content-Type: application/json; Accept: application/json
-6.	Set Body as raw and use following model to add new model.
-```
-{
-        "name": "model4",
-        "description": "example model3 with tech stocks",
-        "cashHoldingPercentage": 10,
-        "driftPercentage": 10,
-        "modelType": "TAXABLE",
-        "rebalanceFrequency": "QUARTERLY",
-        "assetAllocationList": [
-            {
-                "symbol": "AAPL",
-                "percentage": 30
-            },
-            {
-                "symbol": "GOOG",
-                "percentage": 60
-            }
-        ]
-    }
-   ```
-   
-CURL: 
-curl -X PUT \
-  http://localhost:8090/v1/advisor/1/model \
-  -H 'accept: application/json' \
-  -H 'authorization Basic advisor1:pass1'' \
-  -H 'content-type: application/json' \
-  -d '{
-        "name": "model4",
-        "description": "example model3 with tech stocks",
-        "cashHoldingPercentage": 10,
+
+  Post man:  In postman  
+  1.	use  http://localhost:8090/v1/advisor/1/model as URL. 
+  2.	Set Method as PUT
+  3.	Set Authorization Type: Basic Auth
+  4.	Set username: advisor1 and  password: pass1
+  5.	Set Headers; Content-Type: application/json; Accept: application/json
+  6.	Set Body as raw and use following model to add new model.
+  {
+    {
+            "name": "model4",
+            "description": "example model3 with tech stocks",
+            "cashHoldingPercentage": 10,
+            "driftPercentage": 10,
+            "modelType": "TAXABLE",
+            "rebalanceFrequency": "QUARTERLY",
+            "assetAllocationList": [
+                {
+                    "symbol": "AAPL",
+                    "percentage": 30
+                },
+                {
+                    "symbol": "GOOG",
+                    "percentage": 60
+                }
+            ]
+        }
+     }
+    
+      CURL: 
+      curl -X PUT \
+        http://localhost:8090/v1/advisor/1/model \
+        -H 'accept: application/json' \
+        -H 'authorization Basic advisor1:pass1'' \
+        -H 'content-type: application/json' \
+        -d '{
+              "name": "model4",
+              "description": "example model3 with tech stocks",
+              "cashHoldingPercentage": 10,
         "driftPercentage": 10,
         "modelType": "TAXABLE",
         "rebalanceFrequency": "QUARTERLY",
@@ -124,58 +128,60 @@ curl -X PUT \
         ]  }
         
         
- Test Cases:
+#### Test Cases:
 1)	BAD_REQUST(400) :The request body is validated with following rules: 
- "name": Required,
- "description": , Required
- "cashHoldingPercentage": Required,
- "driftPercentage": Required,
- "modelType": Required,
- "rebalanceFrequency": Required,
-modelType must one of QUALIFIED,TAXABLE,
-rebalanceFrequency must  be one of MONTHLY, QUARTERLY, SEMI_ANNUAL, ANNUAL
-The sum of percentages in assetAllocationList and cashHoldingPercentage must be 100
-If any of these validation fails gives Bad request(400).
-Replication if name is null: 
-a.	use  http://localhost:8090/v1/advisor/1/model as URL. 
-b.	Set Method as PUT
-c.	Set Authorization Type: Basic Auth
-d.	Set username: advisor1 and  password: pass1
-e.	Set Headers; Content-Type: application/json; Accept: application/json
-f.	Set Body as raw and use following model to add new model.
-{
-        "description": "example model3 with tech stocks",
-        "cashHoldingPercentage": 10,
-        "driftPercentage": 10,
-        "modelType": "TAXABLE",
-        "rebalanceFrequency": "QUARTERLY",
-        "assetAllocationList": [
-            {
-                "symbol": "AAPL",
-                "percentage": 30
-            },
-            {
-                "symbol": "GOOG",
-                "percentage": 60
-            }
-        ]
-    }
+       "name": Required,
+       "description": , Required
+       "cashHoldingPercentage": Required,
+       "driftPercentage": Required,
+       "modelType": Required,
+       "rebalanceFrequency": Required,
+      modelType must one of QUALIFIED,TAXABLE,
+      rebalanceFrequency must  be one of MONTHLY, QUARTERLY, SEMI_ANNUAL, ANNUAL
+      The sum of percentages in assetAllocationList and cashHoldingPercentage must be 100
+      If any of these validation fails gives Bad request(400).
+      
+      Replication if name is null: 
+      a.	use  http://localhost:8090/v1/advisor/1/model as URL. 
+      b.	Set Method as PUT
+      c.	Set Authorization Type: Basic Auth
+      d.	Set username: advisor1 and  password: pass1
+      e.	Set Headers; Content-Type: application/json; Accept: application/json
+      f.	Set Body as raw and use following model to add new model.
+      {
+              "description": "example model3 with tech stocks",
+              "cashHoldingPercentage": 10,
+              "driftPercentage": 10,
+              "modelType": "TAXABLE",
+              "rebalanceFrequency": "QUARTERLY",
+              "assetAllocationList": [
+                  {
+                      "symbol": "AAPL",
+                      "percentage": 30
+                  },
+                  {
+                      "symbol": "GOOG",
+                      "percentage": 60
+                  }
+              ]
+          }
 
-Replication if total asset is not 100: 
-a.	use  http://localhost:8090/v1/advisor/1/model as URL. 
-b.	Set Method as PUT
-c.	Set Authorization Type: Basic Auth
-d.	Set username: advisor1 and  password: pass1
-e.	Set Headers; Content-Type: application/json; Accept: application/json
-f.	Set Body as raw and use following model to add new model.
-{
-                      "name": "model4",
-        "description": "example model3 with tech stocks",
-        "cashHoldingPercentage": 100,
-        "driftPercentage": 10,
-        "modelType": "TAXABLE",
-        "rebalanceFrequency": "QUARTERLY"
-    }
+      Replication if total asset is not 100: 
+      a.	use  http://localhost:8090/v1/advisor/1/model as URL. 
+      b.	Set Method as PUT
+      c.	Set Authorization Type: Basic Auth
+      d.	Set username: advisor1 and  password: pass1
+      e.	Set Headers; Content-Type: application/json; Accept: application/json
+      f.	Set Body as raw and use following model to add new model.
+      {
+               "name": "model4",
+              "description": "example model3 with tech stocks",
+              "cashHoldingPercentage": 100,
+              "driftPercentage": 10,
+              "modelType": "TAXABLE",
+              "rebalanceFrequency": "QUARTERLY"
+          }
+          
 
 2)	Forbidden (403): If advisor tries to access models that are not associated with logged in or authenticated; 403 Forbidden status code is returned. 
 
