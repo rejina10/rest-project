@@ -1,8 +1,10 @@
-## Pre-requisite to run application: 
+## PORTFolio Management
+
+###### Pre-requisite to run application: 
 1)	Maven V 3.2 or higher
 2)	Java V 1.8 or higher
 
-Steps to run the application: 
+###### Steps to run the application: 
 1)	GOTO: {rootDirectory} of the application in command line.
 2)	In a command line: mvn spring-boot:run
 
@@ -22,14 +24,17 @@ This call will return all the model of the advisor if the advisor is authenticat
 Example Calls:
 In chrome:  http://localhost:8090/v1/advisor/1/model  fill username: advisor1 and password: pass1. 
 Post man:  In postman  
-1)	use  http://localhost:8090/v1/advisor/1/model as URL. 
-2)	Set Method as GET
-3)	Set Authorization Type: Basic Auth
-4)	Set username: advisor1 and  password: pass1
+1.	use  http://localhost:8090/v1/advisor/1/model as URL. 
+2.	Set Method as GET
+3.	Set Authorization Type: Basic Auth
+4.	Set username: advisor1 and  password: pass1
 CURL: Run following CURL command:
-curl -X GET \
+```
+  curl -X GET \
   http://localhost:8090/v1/advisor/1/model \
   -H 'authorization: Basic advisor1:pass1' \
+  
+ ```
 
 Test Cases:
 
