@@ -41,12 +41,14 @@ Test Cases:
 1)	Forbidden (403): If advisor tries to access models that are not associated with logged in or authenticated; 403 Forbidden status code is returned. 
 
 Replication:
+
 Post man:  In postman  
-a.	use  http://localhost:8090/v1/advisor/1/model as URL.  Set method as GET.
-b.	Set Authorization Type: Basic Auth
-c.	Set username: advisor2 and  password: pass2
+-	use  http://localhost:8090/v1/advisor/1/model as URL.  Set method as GET.
+-	Set Authorization Type: Basic Auth
+-	Set username: advisor2 and  password: pass2
+
 CURL: 
-curl -X GET \
+  curl -X GET \
   http://localhost:8090/v1/advisor/1/model \
   -H 'authorization: Basic advisor2:pass2' \
 
@@ -56,24 +58,27 @@ curl -X GET \
 Replication: 
 
 Post man:  In postman  
-a.	use  http://localhost:8090/v1/advisor/10000/model as URL.  Set method as GET.
-b.	Set Authorization Type: Basic Auth
-c.	Set username: advisor2 and  password: pass2
+1.	use  http://localhost:8090/v1/advisor/10000/model as URL.  Set method as GET.
+2.	Set Authorization Type: Basic Auth
+3.	Set username: advisor2 and  password: pass2
 CURL: 
-curl -X GET \
+```
+  curl -X GET \
   http://localhost:8090/v1/advisor/10000/model \
   -H 'authorization: Basic advisor2:pass2' \
+```
 
 PUT Models for advisor:
 /v1/advisor/{advisorId}/model
 This call adds or update model for an advisor if the advisor is authenticated and has access to the models.
 Post man:  In postman  
-1)	use  http://localhost:8090/v1/advisor/1/model as URL. 
-2)	Set Method as PUT
-3)	Set Authorization Type: Basic Auth
-4)	Set username: advisor1 and  password: pass1
-5)	Set Headers; Content-Type: application/json; Accept: application/json
-6)	Set Body as raw and use following model to add new model.
+1.	use  http://localhost:8090/v1/advisor/1/model as URL. 
+2.	Set Method as PUT
+3.	Set Authorization Type: Basic Auth
+4.	Set username: advisor1 and  password: pass1
+5.	Set Headers; Content-Type: application/json; Accept: application/json
+6.	Set Body as raw and use following model to add new model.
+```
 {
         "name": "model4",
         "description": "example model3 with tech stocks",
@@ -92,6 +97,8 @@ Post man:  In postman
             }
         ]
     }
+   ```
+   
 CURL: 
 curl -X PUT \
   http://localhost:8090/v1/advisor/1/model \
