@@ -1,10 +1,10 @@
 ## PORTFolio Management
 
-###### Pre-requisite to run application: 
+### Pre-requisite to run application: 
 1)	Maven V 3.2 or higher
 2)	Java V 1.8 or higher
 
-###### Steps to run the application: 
+### Steps to run the application: 
 1)	GOTO: {rootDirectory} of the application in command line.
 2)	In a command line: mvn spring-boot:run
 
