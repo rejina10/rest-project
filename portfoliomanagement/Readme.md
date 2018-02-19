@@ -174,7 +174,7 @@ This call adds or update model for an advisor if the advisor is authenticated an
       e.	Set Headers; Content-Type: application/json; Accept: application/json
       f.	Set Body as raw and use following model to add new model.
       {
-               "name": "model4",
+              "name": "model4",
               "description": "example model3 with tech stocks",
               "cashHoldingPercentage": 100,
               "driftPercentage": 10,
@@ -194,7 +194,7 @@ d.	Set username: advisor2 and  password: pass2
 e.	Set Headers; Content-Type: application/json; Accept: application/json
 f.	Set Body as raw and use following model to add new model.
 {
-                      "name": "model4",
+        "name": "model4",
         "description": "example model3 with tech stocks",
         "cashHoldingPercentage": 100,
         "driftPercentage": 10,
@@ -213,7 +213,7 @@ g.	Set username: advisor2 and  password: pass2
 h.	Set Headers; Content-Type: application/json; Accept: application/json
 i.	Set Body as raw and use following model to add new model.
 {
-                      "name": "model4",
+        "name": "model4",
         "description": "example model3 with tech stocks",
         "cashHoldingPercentage": 100,
         "driftPercentage": 10,
@@ -248,6 +248,7 @@ Post man:  In postman
             }
         ]
     }
+    
 CURL: 
 curl -X PUT \
   http://localhost:8090/v1/advisor/1/model \
