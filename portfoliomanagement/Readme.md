@@ -44,7 +44,7 @@ CURL: Run following CURL command:
 
       Replication:
 
-      Post man:  In postman  
+      Post man: 
       -	use  http://localhost:8090/v1/advisor/1/model as URL.  Set method as GET.
       -	Set Authorization Type: Basic Auth
       -	Set username: advisor2 and  password: pass2
@@ -64,6 +64,7 @@ CURL: Run following CURL command:
       1.	use  http://localhost:8090/v1/advisor/10000/model as URL.  Set method as GET.
       2.	Set Authorization Type: Basic Auth
       3.	Set username: advisor2 and  password: pass2
+      
       CURL: 
       ```
         curl -X GET \
