@@ -219,14 +219,14 @@ This call adds or update model for an advisor if the advisor is authenticated an
       5.	Set Headers; Content-Type: application/json; Accept: application/json
       6.	Set Body as raw and use following model to add new model.
       ```
-      {
-      "name": "model4",
-      "description": "example model3 with tech stocks",
-      "cashHoldingPercentage": 100,
-      "driftPercentage": 10,
-      "modelType": "TAXABLE",
-      "rebalanceFrequency": "QUARTERLY"
-      }
+        {
+              "name": "model4",
+              "description": "example model3 with tech stocks",
+              "cashHoldingPercentage": 100,
+              "driftPercentage": 10,
+              "modelType": "TAXABLE",
+              "rebalanceFrequency": "QUARTERLY"
+         }
       ```
 4)	Create vs Update: If client passes valid advisor with valid request body and name already in database. Then new model is not created instead model with same name is updated:
 
@@ -238,26 +238,26 @@ This call adds or update model for an advisor if the advisor is authenticated an
       4.	Set username: advisor1 and  password: pass1
       5.	Set Headers; Content-Type: application/json; Accept: application/json
       6.	Set Body as raw and use following model to add new model.
-       ```
-        {
-                "name": "model2",
-                "description": "update model2 description",
-                "cashHoldingPercentage": 10,
-                "driftPercentage": 100,
-                "modelType": "TAXABLE",
-                "rebalanceFrequency": "QUARTERLY",
-                "assetAllocationList": [
-                    {
-                        "symbol": "AAPL",
-                        "percentage": 30
-                    },
-                    {
-                        "symbol": "FOO",
-                        "percentage": 60
-                    }
-                ]
-            }
-        ```
+      ```
+      {
+            "name": "model2",
+            "description": "update model2 description",
+            "cashHoldingPercentage": 10,
+            "driftPercentage": 100,
+            "modelType": "TAXABLE",
+            "rebalanceFrequency": "QUARTERLY",
+            "assetAllocationList": [
+                {
+                    "symbol": "AAPL",
+                    "percentage": 30
+                },
+                {
+                    "symbol": "FOO",
+                    "percentage": 60
+                }
+            ]
+        }
+      ```
 
     CURL: 
       ```
