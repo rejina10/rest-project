@@ -54,7 +54,7 @@ CURL: Run following CURL command:
           curl -X GET \
           http://localhost:8090/v1/advisor/1/model \
           -H 'authorization: Basic advisor2:pass2' \
-        ```  
+        ``` 
 
   2)	Not Found (404): If user tries to get models of advisor that is not in database then 404 is returned. 
 
