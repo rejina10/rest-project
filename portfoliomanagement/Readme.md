@@ -18,7 +18,7 @@ advisor2	advisor2	pass2
 Two models are created for advisor1 and one model is created for advisor2. 
 
 ### PART I: Get Models for advisor:
-**/v1/advisor/{advisorId}/model**
+**/v1/advisor/{advisorId}/model** <br/>
 This call will return all the model of the advisor if the advisor is authenticated and has access to the models.
 
 Example Calls:
@@ -72,7 +72,7 @@ CURL: Run following CURL command:
       ```
 
 ### Part II- PUT Models for advisor:
-**/v1/advisor/{advisorId}/model**
+**/v1/advisor/{advisorId}/model** <br/>
 This call adds or update model for an advisor if the advisor is authenticated and has access to the models.
 
   Post man:  
@@ -113,19 +113,20 @@ This call adds or update model for an advisor if the advisor is authenticated an
               "name": "model4",
               "description": "example model3 with tech stocks",
               "cashHoldingPercentage": 10,
-        "driftPercentage": 10,
-        "modelType": "TAXABLE",
-        "rebalanceFrequency": "QUARTERLY",
-        "assetAllocationList": [
-            {
-                "symbol": "AAPL",
-                "percentage": 30
-            },
-            {
-                "symbol": "GOOG",
-                "percentage": 60
-            }
-        ]  }
+              "driftPercentage": 10,
+              "modelType": "TAXABLE",
+              "rebalanceFrequency": "QUARTERLY",
+              "assetAllocationList": [
+                  {
+                      "symbol": "AAPL",
+                      "percentage": 30
+                  },
+                  {
+                      "symbol": "GOOG",
+                      "percentage": 60
+                  }
+                ]  
+             }
         
         
 ### Test Cases:
