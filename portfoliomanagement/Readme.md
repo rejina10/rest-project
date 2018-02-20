@@ -38,7 +38,7 @@ CURL: Run following CURL command:
   
  ```
 
-####### Test Cases:
+### Test Cases:
 
   1)	Forbidden (403): If advisor tries to access models that are not associated with logged in or authenticated; 403 Forbidden status         code is returned. 
 
@@ -50,17 +50,16 @@ CURL: Run following CURL command:
       3. Set username: advisor2 and  password: pass2
 
       CURL: 
-      ```
+      
         curl -X GET \
         http://localhost:8090/v1/advisor/1/model \
         -H 'authorization: Basic advisor2:pass2' \
-      ```
 
   2)	Not Found (404): If user tries to get models of advisor that is not in database then 404 is returned. 
 
       Replication: 
 
-      Post man:  In postman  
+      Post man: 
       1.	use  http://localhost:8090/v1/advisor/10000/model as URL.  Set method as GET.
       2.	Set Authorization Type: Basic Auth
       3.	Set username: advisor2 and  password: pass2
