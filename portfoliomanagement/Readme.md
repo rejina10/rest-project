@@ -50,26 +50,27 @@ CURL: Run following CURL command:
       3. Set username: advisor2 and  password: pass2
 
       CURL: 
-      
+      ```
         curl -X GET \
         http://localhost:8090/v1/advisor/1/model \
         -H 'authorization: Basic advisor2:pass2' \
+      ```  
 
   2)	Not Found (404): If user tries to get models of advisor that is not in database then 404 is returned. 
 
-      Replication: 
+        Replication: 
 
-      Post man: 
-      1.	use  http://localhost:8090/v1/advisor/10000/model as URL.  Set method as GET.
-      2.	Set Authorization Type: Basic Auth
-      3.	Set username: advisor2 and  password: pass2
+        Post man: 
+        1.	use  http://localhost:8090/v1/advisor/10000/model as URL.  Set method as GET.
+        2.	Set Authorization Type: Basic Auth
+        3.	Set username: advisor2 and  password: pass2
       
-      CURL: 
-      ```
-        curl -X GET \
-        http://localhost:8090/v1/advisor/10000/model \
-        -H 'authorization: Basic advisor2:pass2' \
-      ```
+        CURL: 
+        ```
+          curl -X GET \
+          http://localhost:8090/v1/advisor/10000/model \
+          -H 'authorization: Basic advisor2:pass2' \
+        ```
 
 ### Part II- PUT Models for advisor:
 **/v1/advisor/{advisorId}/model** <br/>
@@ -82,28 +83,29 @@ This call adds or update model for an advisor if the advisor is authenticated an
   4.	Set username: advisor1 and  password: pass1
   5.	Set Headers; Content-Type: application/json; Accept: application/json
   6.	Set Body as raw and use following model to add new model.
-  {
-    {
-            "name": "model4",
-            "description": "example model3 with tech stocks",
-            "cashHoldingPercentage": 10,
-            "driftPercentage": 10,
-            "modelType": "TAXABLE",
-            "rebalanceFrequency": "QUARTERLY",
-            "assetAllocationList": [
-                {
-                    "symbol": "AAPL",
-                    "percentage": 30
-                },
-                {
-                    "symbol": "GOOG",
-                    "percentage": 60
-                }
-            ]
-        }
-     }
+      ```
+        {
+                "name": "model4",
+                "description": "example model3 with tech stocks",
+                "cashHoldingPercentage": 10,
+                "driftPercentage": 10,
+                "modelType": "TAXABLE",
+                "rebalanceFrequency": "QUARTERLY",
+                "assetAllocationList": [
+                    {
+                        "symbol": "AAPL",
+                        "percentage": 30
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "percentage": 60
+                    }
+                ]
+          }
+      ```
     
       CURL: 
+      ```
       curl -X PUT \
         http://localhost:8090/v1/advisor/1/model \
         -H 'accept: application/json' \
@@ -127,7 +129,7 @@ This call adds or update model for an advisor if the advisor is authenticated an
                   }
                 ]  
              }
-        
+     ```   
         
 ### Test Cases:
 1)	BAD_REQUST(400) : The request body is validated with following rules: <br />
