@@ -84,54 +84,54 @@ Post man:
 5.	Set Headers; Content-Type: application/json; Accept: application/json
 6.	Set Body as raw and use following model to add new model.
         
-        ```
-            {
-                  "name": "model4",
-                  "description": "example model3 with tech stocks",
-                  "cashHoldingPercentage": 10,
-                  "driftPercentage": 10,
-                  "modelType": "TAXABLE",
-                  "rebalanceFrequency": "QUARTERLY",
-                  "assetAllocationList": [
-                      {
-                          "symbol": "AAPL",
-                          "percentage": 30
-                      },
-                      {
-                          "symbol": "GOOG",
-                          "percentage": 60
-                      }
-                  ]
-            }
-        ```
+```
+    {
+          "name": "model4",
+          "description": "example model3 with tech stocks",
+          "cashHoldingPercentage": 10,
+          "driftPercentage": 10,
+          "modelType": "TAXABLE",
+          "rebalanceFrequency": "QUARTERLY",
+          "assetAllocationList": [
+              {
+                  "symbol": "AAPL",
+                  "percentage": 30
+              },
+              {
+                  "symbol": "GOOG",
+                  "percentage": 60
+              }
+          ]
+    }
+```
 
 CURL: 
        
-       ```
-        curl -X PUT \
-          http://localhost:8090/v1/advisor/1/model \
-          -H 'accept: application/json' \
-          -H 'authorization Basic advisor1:pass1'' \
-          -H 'content-type: application/json' \
-          -d '{
-                "name": "model4",
-                "description": "example model3 with tech stocks",
-                "cashHoldingPercentage": 10,
-                "driftPercentage": 10,
-                "modelType": "TAXABLE",
-                "rebalanceFrequency": "QUARTERLY",
-                "assetAllocationList": [
-                    {
-                        "symbol": "AAPL",
-                        "percentage": 30
-                    },
-                    {
-                        "symbol": "GOOG",
-                        "percentage": 60
-                    }
-                  ]  
-               }
-       ```   
+ ```
+  curl -X PUT \
+    http://localhost:8090/v1/advisor/1/model \
+    -H 'accept: application/json' \
+    -H 'authorization Basic advisor1:pass1'' \
+    -H 'content-type: application/json' \
+    -d '{
+          "name": "model4",
+          "description": "example model3 with tech stocks",
+          "cashHoldingPercentage": 10,
+          "driftPercentage": 10,
+          "modelType": "TAXABLE",
+          "rebalanceFrequency": "QUARTERLY",
+          "assetAllocationList": [
+              {
+                  "symbol": "AAPL",
+                  "percentage": 30
+              },
+              {
+                  "symbol": "GOOG",
+                  "percentage": 60
+              }
+            ]  
+         }
+ ```   
         
 ### Test Cases:
 1)	BAD_REQUST(400) : The request body is validated with following rules: <br />
