@@ -204,9 +204,9 @@ This call adds or update model for an advisor if the advisor is authenticated an
                 "cashHoldingPercentage": 100,
                 "driftPercentage": 10,
                 "modelType": "TAXABLE",
-              "rebalanceFrequency": "QUARTERLY"
-            }
-       ```
+                "rebalanceFrequency": "QUARTERLY"
+           }
+      ```
          
 3)	Not found (404): If user tries to get models of advisor that is not in database then 404 is returned. 
 
