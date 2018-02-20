@@ -166,7 +166,7 @@ This call adds or update model for an advisor if the advisor is authenticated an
                         "percentage": 60
                     }
                 ]
-            }
+          }
       ```
 
       Replication if total asset is not 100: 
@@ -177,7 +177,7 @@ This call adds or update model for an advisor if the advisor is authenticated an
       5.	Set Headers; Content-Type: application/json; Accept: application/json
       6.	Set Body as raw and use following model to add new model.
       ```
-      {
+         {
               "name": "model4",
               "description": "example model3 with tech stocks",
               "cashHoldingPercentage": 100,
@@ -198,7 +198,7 @@ This call adds or update model for an advisor if the advisor is authenticated an
       5.	Set Headers; Content-Type: application/json; Accept: application/json
       6.	Set Body as raw and use following model to add new model.
       ```
-        {
+          {
                 "name": "model4",
                 "description": "example model3 with tech stocks",
                 "cashHoldingPercentage": 100,
