@@ -5,7 +5,7 @@
 2)	Java V 1.8 or higher
 
 ### Steps to run the application: 
-1)	GOTO: {rootDirectory} of the application in command line.
+1)	GOTO: /{rootDirectory} of the application in command line.
 2)	In a command line: mvn spring-boot:run
 
 Since this is a spring boot application no need to deploy war in external tomcat. It should run the application in embedded tomcat. After the app is up it will run in port 8090.
