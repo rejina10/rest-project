@@ -75,7 +75,7 @@ CURL: Run following CURL command:
 **/v1/advisor/{advisorId}/model**
 This call adds or update model for an advisor if the advisor is authenticated and has access to the models.
 
-  Post man:  In postman  
+  Post man:  
   1.	use  http://localhost:8090/v1/advisor/1/model as URL. 
   2.	Set Method as PUT
   3.	Set Authorization Type: Basic Auth
@@ -128,51 +128,53 @@ This call adds or update model for an advisor if the advisor is authenticated an
         ]  }
         
         
-#### Test Cases:
-1)	BAD_REQUST(400) :The request body is validated with following rules: 
-       "name": Required,
-       "description": , Required
-       "cashHoldingPercentage": Required,
-       "driftPercentage": Required,
-       "modelType": Required,
-       "rebalanceFrequency": Required,
-      modelType must one of QUALIFIED,TAXABLE,
-      rebalanceFrequency must  be one of MONTHLY, QUARTERLY, SEMI_ANNUAL, ANNUAL
-      The sum of percentages in assetAllocationList and cashHoldingPercentage must be 100
+### Test Cases:
+1)	BAD_REQUST(400) : The request body is validated with following rules: <br />
+       "name": Required, <br />
+       "description": Required, <br />
+       "cashHoldingPercentage": Required, <br />
+       "driftPercentage": Required, <br />
+       "modelType": Required, <br />
+       "rebalanceFrequency": Required, <br />
+      modelType must one of QUALIFIED,TAXABLE,  <br />
+      rebalanceFrequency must  be one of MONTHLY, QUARTERLY, SEMI_ANNUAL, ANNUAL <br />
+      The sum of percentages in assetAllocationList and cashHoldingPercentage must be 100 <br /> <br />
       If any of these validation fails gives Bad request(400).
       
       Replication if name is null: 
-      a.	use  http://localhost:8090/v1/advisor/1/model as URL. 
-      b.	Set Method as PUT
-      c.	Set Authorization Type: Basic Auth
-      d.	Set username: advisor1 and  password: pass1
-      e.	Set Headers; Content-Type: application/json; Accept: application/json
-      f.	Set Body as raw and use following model to add new model.
+      1.	use  http://localhost:8090/v1/advisor/1/model as URL. 
+      2.	Set Method as PUT
+      3.	Set Authorization Type: Basic Auth
+      4.	Set username: advisor1 and  password: pass1
+      5.	Set Headers; Content-Type: application/json; Accept: application/json
+      6.	Set Body as raw and use following model to add new model.
       {
-              "description": "example model3 with tech stocks",
-              "cashHoldingPercentage": 10,
-              "driftPercentage": 10,
-              "modelType": "TAXABLE",
-              "rebalanceFrequency": "QUARTERLY",
-              "assetAllocationList": [
-                  {
-                      "symbol": "AAPL",
-                      "percentage": 30
-                  },
-                  {
-                      "symbol": "GOOG",
-                      "percentage": 60
-                  }
-              ]
-          }
+        {
+                "description": "example model3 with tech stocks",
+                "cashHoldingPercentage": 10,
+                "driftPercentage": 10,
+                "modelType": "TAXABLE",
+                "rebalanceFrequency": "QUARTERLY",
+                "assetAllocationList": [
+                    {
+                        "symbol": "AAPL",
+                        "percentage": 30
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "percentage": 60
+                    }
+                ]
+            }
+       }
 
       Replication if total asset is not 100: 
-      a.	use  http://localhost:8090/v1/advisor/1/model as URL. 
-      b.	Set Method as PUT
-      c.	Set Authorization Type: Basic Auth
-      d.	Set username: advisor1 and  password: pass1
-      e.	Set Headers; Content-Type: application/json; Accept: application/json
-      f.	Set Body as raw and use following model to add new model.
+      1.	use  http://localhost:8090/v1/advisor/1/model as URL. 
+      2.	Set Method as PUT
+      3.	Set Authorization Type: Basic Auth
+      4.	Set username: advisor1 and  password: pass1
+      5.	Set Headers; Content-Type: application/json; Accept: application/json
+      6.	Set Body as raw and use following model to add new model.
       {
               "name": "model4",
               "description": "example model3 with tech stocks",
@@ -183,35 +185,37 @@ This call adds or update model for an advisor if the advisor is authenticated an
           }
           
 
-2)	Forbidden (403): If advisor tries to access models that are not associated with logged in or authenticated; 403 Forbidden status code is returned. 
+  2)	Forbidden (403): If advisor tries to access models that are not associated with logged in or authenticated; 403 Forbidden status code is returned. 
 
-Replication:
-Post man:  In postman  
-a.	use  http://localhost:8090/v1/advisor/1/model as URL.  
-b.	Set Method as PUT
-c.	Set Authorization Type: Basic Auth
-d.	Set username: advisor2 and  password: pass2
-e.	Set Headers; Content-Type: application/json; Accept: application/json
-f.	Set Body as raw and use following model to add new model.
-{
-        "name": "model4",
-        "description": "example model3 with tech stocks",
-        "cashHoldingPercentage": 100,
-        "driftPercentage": 10,
-        "modelType": "TAXABLE",
-        "rebalanceFrequency": "QUARTERLY"
-    }
+  Replication:
+  Post man:  In postman  
+  1.	use  http://localhost:8090/v1/advisor/1/model as URL.  
+  2.	Set Method as PUT
+  3.	Set Authorization Type: Basic Auth
+  4.	Set username: advisor2 and  password: pass2
+  5.	Set Headers; Content-Type: application/json; Accept: application/json
+  6.	Set Body as raw and use following model to add new model.
+  {
+    {
+            "name": "model4",
+            "description": "example model3 with tech stocks",
+            "cashHoldingPercentage": 100,
+            "driftPercentage": 10,
+            "modelType": "TAXABLE",
+            "rebalanceFrequency": "QUARTERLY"
+        }
+   }     
 3)	Not found (404): If user tries to get models of advisor that is not in database then 404 is returned. 
 
 Replication: 
 
 Post man:  In postman  
-a.	use  http://localhost:8090/v1/advisor/10000/model as URL.  
-b.	Set Method as PUT
-c.	Set Authorization Type: Basic Auth
-g.	Set username: advisor2 and  password: pass2
-h.	Set Headers; Content-Type: application/json; Accept: application/json
-i.	Set Body as raw and use following model to add new model.
+1.	use  http://localhost:8090/v1/advisor/10000/model as URL.  
+2.	Set Method as PUT
+3.	Set Authorization Type: Basic Auth
+4.	Set username: advisor2 and  password: pass2
+5.	Set Headers; Content-Type: application/json; Accept: application/json
+6.	Set Body as raw and use following model to add new model.
 {
         "name": "model4",
         "description": "example model3 with tech stocks",
@@ -224,30 +228,32 @@ i.	Set Body as raw and use following model to add new model.
 4)	Create vs Update: If client passes valid advisor with valid request body and name already in database. Then new model is not created instead model with same name is updated:
 
 Post man:  In postman  
-1)	use  http://localhost:8090/v1/advisor/1/model as URL. 
-2)	Set Method as PUT
-3)	Set Authorization Type: Basic Auth
-4)	Set username: advisor1 and  password: pass1
-5)	Set Headers; Content-Type: application/json; Accept: application/json
-6)	Set Body as raw and use following model to add new model.
-{
-        "name": "model2",
-        "description": "update model2 description",
-        "cashHoldingPercentage": 10,
-        "driftPercentage": 100,
-        "modelType": "TAXABLE",
-        "rebalanceFrequency": "QUARTERLY",
-        "assetAllocationList": [
-            {
-                "symbol": "AAPL",
-                "percentage": 30
-            },
-            {
-                "symbol": "FOO",
-                "percentage": 60
-            }
-        ]
-    }
+1.	use  http://localhost:8090/v1/advisor/1/model as URL. 
+2.	Set Method as PUT
+3.	Set Authorization Type: Basic Auth
+4.	Set username: advisor1 and  password: pass1
+5.	Set Headers; Content-Type: application/json; Accept: application/json
+6.	Set Body as raw and use following model to add new model.
+   {
+    {
+            "name": "model2",
+            "description": "update model2 description",
+            "cashHoldingPercentage": 10,
+            "driftPercentage": 100,
+            "modelType": "TAXABLE",
+            "rebalanceFrequency": "QUARTERLY",
+            "assetAllocationList": [
+                {
+                    "symbol": "AAPL",
+                    "percentage": 30
+                },
+                {
+                    "symbol": "FOO",
+                    "percentage": 60
+                }
+            ]
+        }
+     }
     
 CURL: 
 curl -X PUT \
