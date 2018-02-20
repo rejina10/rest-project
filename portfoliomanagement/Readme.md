@@ -76,7 +76,7 @@ CURL: Run following CURL command:
 **/v1/advisor/{advisorId}/model** <br/>
 This call adds or update model for an advisor if the advisor is authenticated and has access to the models.
 
-  Post man:  
+    Post man:  
     1.	use  http://localhost:8090/v1/advisor/1/model as URL. 
     2.	Set Method as PUT
     3.	Set Authorization Type: Basic Auth
