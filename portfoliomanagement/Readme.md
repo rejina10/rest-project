@@ -38,16 +38,16 @@ CURL: Run following CURL command:
   
  ```
 
-#### Test Cases:
+####### Test Cases:
 
   1)	Forbidden (403): If advisor tries to access models that are not associated with logged in or authenticated; 403 Forbidden status         code is returned. 
 
       Replication:
 
       Post man: 
-      -	use  http://localhost:8090/v1/advisor/1/model as URL.  Set method as GET.
-      -	Set Authorization Type: Basic Auth
-      -	Set username: advisor2 and  password: pass2
+      1. use  http://localhost:8090/v1/advisor/1/model as URL.  Set method as GET.
+      2. Set Authorization Type: Basic Auth
+      3. Set username: advisor2 and  password: pass2
 
       CURL: 
       ```
